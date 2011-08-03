@@ -1,0 +1,21 @@
+<% javascript_tag do %>
+    var client = new Faye.Client('http://localhost:9292/faye');
+    client.subscribe("<%= user_path(@user) %>", function(data){
+      console.log(data);
+    });
+<% end %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
